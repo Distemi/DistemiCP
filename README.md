@@ -1,8 +1,10 @@
 For Windows
 	RU:
-	Для запуска скачайте NodeJS(https://nodejs.org/ru/) и запустите панель используя Start.bat
+	Измените данные в файлах вложенных в папку config.
+	Для запуска скачайте NodeJS(https://nodejs.org/ru/) и через консоль пропишите node index.js
 	EN:
-	To start, download NodeJS (https://nodejs.org/ru/) and start the panel using Start.bat
+	Change the data in the files attached to the config folder.
+	To run, download NodeJS (https://nodejs.org/ru/) and write node index.js through the console
 For Linux
 	RU:
 	apt install -y nodejs npm git
