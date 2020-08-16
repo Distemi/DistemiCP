@@ -34,11 +34,11 @@ Distemi Control Panel
 
 
 
-**Thanks to libraries**
+### Thanks to libraries
 
-	- body-parser     - https://www.npmjs.com/package/body-parser
-	- child_process   - https://www.npmjs.com/package/child-process
-	- express         - https://www.npmjs.com/package/express
-	- express-session - https://www.npmjs.com/package/express-session
-	- js-yaml         - https://www.npmjs.com/package/js-yaml
-	- pidusage        - https://www.npmjs.com/package/pidusage
+- body-parser     - https://www.npmjs.com/package/body-parser
+- child_process   - https://www.npmjs.com/package/child-process
+- express         - https://www.npmjs.com/package/express
+- express-session - https://www.npmjs.com/package/express-session
+- js-yaml         - https://www.npmjs.com/package/js-yaml
+- pidusage        - https://www.npmjs.com/package/pidusage
