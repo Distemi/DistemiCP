@@ -1,5 +1,5 @@
 
-      Distemi Control Panel
+Distemi Control Panel
 =====================
 
 **For Windows**
