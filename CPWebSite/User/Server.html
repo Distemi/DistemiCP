@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать, {user}!</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="main_outer" style="height:100vh; width: 100vm">
+          <span class="main server_main" style="width: 100%">
+            <div class="line_x">
+                <main class="el"><a href="/User/Cabinet.html">{lang:Web:Cabinet}</a></main>
+                <main class="el"><a href="/User/Home.html">{lang:Web:Home}</a></main>
+                {adminPage}
+            </div>
+            <div class="console_main" align="left">
+                <div class="console" id="console">{console}</div>
+                <div class="command">
+                    <input type="text" id="command" placeholder=">...">
+                    <input type="button" id="sendCommand" value="▶">
+                </div>
+                <div class="buttons">
+                    <button onclick="SendData('StartServer');" style="color: lime;border-top-left-radius: 25px;border-bottom-left-radius: 25px;">▶</button>
+                    <span></span>
+                    <button onclick="SendData('StopServer');" style="color: yellow">❙❙</button>
+                    <span></span>
+                    <button onclick="SendData('RestartServer');" style="color: orange">❙❙▶</button>
+                    <span></span>
+                    <button onclick="SendData('KillServer');" style="color: red;border-top-right-radius: 25px;border-bottom-right-radius: 25px;">◯</button>
+                </div>
+                <div id="Stats" style="float: right;padding: 0.1em;margin-top: 0.2em;margin-right: 0.2em;">{lang:Web:Loading}</div>
+                <script>
+                    let OldConsoleData = '';
+                    function ReadConsole(Text) {
+                        return ParseConsoleLines(Text.split('<br>'));
+                    }
+                    function ParseConsoleLines(Lines, returnType = 'HTML') {
+                        if (returnType === 'HTML') {
+                            let ret = '';
+                            for (let i = 0; i < Lines.length; i++) {
+                                let Line = Lines[i].toString();
+                                let LineType = Line.split(']')[1];
+                                if (typeof LineType !== "undefined") {
+                                    LineType = LineType.split('/')[1];
+                                    ret = `${ret}<p style='color: ${LineType === 'INFO' ? '#c3c3c3' : LineType === 'WARN' ? '#ff5' : '#f55'}'>${Line}</p>`;
+                                } else {
+                                    ret = ret + Line;
+                                }
+
+                            }
+
+                            return ret;
+                        }
+                    }
+                    setInterval(()=>{
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("POST", '/User/Server.html', true);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.send(`ReqMethod=${encodeURIComponent('getConsole')}`);
+                        xhr.onloadend = function() {
+                            const All = ReadConsole(xhr.responseText);
+                            if (All !== OldConsoleData) {
+                                OldConsoleData = All;
+                                document.getElementById('console').innerHTML = All;
+                                document.getElementById('console').scrollTop = document.getElementById('console').scrollHeight;
+                            }
+
+                        }
+                    },1000);
+                    document.getElementById('console').innerHTML = ReadConsole(document.getElementById('console').innerHTML);
+                    document.getElementById('console').scrollTop = document.getElementById('console').scrollHeight;
+                    function SendData(Method, CallBack = null, Data = '') {
+                        let POST_DATA = `ReqMethod=${encodeURIComponent(Method)}`;
+                        if (Data !== '') {
+                            POST_DATA = `${POST_DATA}&Data=${encodeURIComponent(Data)}`;
+                        }
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("POST", '/User/Server.html', true);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.send(POST_DATA);
+                        xhr.onloadend = function() {//console.log(xhr.responseText);
+                            if (typeof CallBack === 'function') {
+                                CallBack(xhr.responseText);
+                            } else {
+                                return xhr.responseText;
+                            }
+                        }
+                    }
+                    document.getElementById('sendCommand').onclick = function () {
+                        SendData('SendCommand', function (output)  {
+                            if (output === true) {
+                                document.getElementById('command').value = '';
+                            }
+                        }, document.getElementById('command').value);
+                    }
+                    const Stats = document.getElementById('Stats');
+                    setInterval(()=>{
+                        SendData('GetStats', function (output)  {
+                            output = JSON.parse(output);
+                            if (typeof output.mem !== 'undefined') {
+                                Stats.innerText = `{lang:Web:MEM}: ${output.mem}. {lang:Web:CPU}: ${output.cpu}`;
+                            } else {
+
+                                if (typeof output.code !== 'undefined') {
+                                    Stats.innerText = '{lang:Web:ServerStopped}';
+                                } else {
+                                    Stats.innerText = JSON.stringify(output);
+                                }
+                            }
+                        });
+                    },3000);
+                </script>
+            </div>
+          </span>
+</div>
+
+<script src="/js/MiniLib.js"></script>
+</body>
+</html>

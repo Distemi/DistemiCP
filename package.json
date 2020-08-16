@@ -1,0 +1,24 @@
+{
+  "name": "distemi-cp",
+  "version": "0.1.0",
+  "description": "Control panel for game servers.",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js"
+  },
+  "keywords": [
+    "Distemi",
+    "CP",
+    "GameCp"
+  ],
+  "author": "Distemi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "child_process": "^1.0.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "js-yaml": "^3.14.0",
+    "pidusage": "^2.0.21"
+  }
+}

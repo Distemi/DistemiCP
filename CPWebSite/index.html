@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+    <meta charset="UTF-8">
+    <title>{lang:auth:Web:Authorisation}</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        input[type=text], input[type=password] {
+            border-radius: 25px;
+            padding: 0.3em;
+            margin: 0.4em;
+            border: none;
+            box-shadow: 0 2px 2px gray, inset 0 3px 3px rgba(104, 104, 104, 0.41);
+        }
+        input[type=button] {
+            border-radius: 25px;
+            padding: 0.3em;
+            margin: 1em 0.4em 0.4em;
+            border: 1px solid #0202022e;
+            background: rgba(136, 136, 136, 0.18);
+            box-shadow: 0 5px 9px -1.9px gray;
+        }
+        input {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main_outer" style="height:100vh; width: 100vm">
+      <span class="main" style="padding: 15px">
+          <p style="font-size: 150%">{lang:auth:Web:Authorisation}</p>
+          <br>
+          <form autocomplete="off" id="authForm">
+
+                <input type="text" id="login" name="login" placeholder="{lang:auth:Web:login}">
+                <br>
+                <input type="password" id="password" name="password" placeholder="{lang:auth:Web:password}">
+                <br>
+                <input type="button" id="auth" value="{lang:auth:Web:auth}">
+                <br>
+              <label id="output"></label>
+          </form>
+      </span>
+    </div>
+    <script>
+        function elV(elId) {
+            return document.getElementById(elId).value;
+        }
+        document.getElementById('auth').addEventListener('click', e => {
+            const login = elV('login');
+            const pass = elV('password');
+            const xhr = new XMLHttpRequest();
+            const body = "login=" + encodeURIComponent(login) + "&password=" + encodeURIComponent(pass);
+            xhr.open("POST", '/managers/auth', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(body);
+            xhr.onloadend = function() {
+                console.log(xhr.responseText);
+                document.getElementById("output").innerText = JSON.parse(xhr.responseText).data;
+                document.getElementById("output").style.color = JSON.parse(xhr.responseText).status === 403 ? 'red' : 'lime';
+                if (JSON.parse(xhr.responseText).status === 200) {
+                    location.reload();
+                }
+            }
+            return false;
+        });
+    </script>
+</body>
+</html>

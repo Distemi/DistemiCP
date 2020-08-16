@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{lang:Web:Server}</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="main_outer" style="height:100vh; width: 100vm">
+          <span class="main" style="max-height: 100%">
+            <div class="line_x">
+                <main class="el"><a href="/User/Cabinet.html">{lang:Web:Cabinet}</a></main>
+                <main class="el"><a href="/User/Server.html">{lang:Web:Server}</a></main>
+                <main class="el"><a href="/User/Home.html">{lang:Web:Home}</a></main>
+            </div>
+              <style>
+                  .Form {
+                    display: grid;
+                  }
+                  input[type=text], input[type=password] {
+                      border-radius: 25px;
+                      padding: 0.3em;
+                      margin: 0.4em;
+                      border: none;
+                      box-shadow: 0 2px 2px gray, inset 0 3px 3px rgba(104, 104, 104, 0.41);
+                  }
+                  input[type=button] {
+                      transition: 0.5s all;
+                      border-radius: 25px;
+                      padding: 0.3em;
+                      margin: 1em 0.4em 0.4em;
+                      border: 1px solid #0202022e;
+                      background: rgba(136, 136, 136, 0.18);
+                  }
+                  input[type=button]:hover {
+                      background: rgba(148, 125, 125, 0.18);
+                      border: 2px solid #0202022e;
+                      padding: 0.4em;
+                  }
+                  input {
+                      outline: none;
+                  }
+              </style>
+            <div style="max-width: 100%;overflow-y: auto;display:inherit" align="center">
+                <form autocomplete="off" id="Reg">
+                    <h2>User registration.</h2>
+                    <input type="text" id="reg_login" name="login" placeholder="Login" required>
+                    <br>
+                    <input type="password" id="reg_password" name="password" placeholder="Password" required>
+                    <br>
+                    <input type='checkbox' id="reg_is_admin"><label for="reg_is_admin">It admin</label>
+                    <br>
+                    <input type="button" id="reg" value="Registration">
+                    <br>
+                    <label id="reg_output"></label>
+              </form>
+            </div>
+          </span>
+    </div>
+    <script>
+        document.getElementById('reg').onclick = function () {
+            SendData(
+                'Reg',
+                {login:elV('reg_login'),password:elV('reg_password'),is_admin:elV('reg_is_admin')},
+                function (outp) {document.getElementById('reg_output').innerText=outp;});
+        }
+        function elV(elId) {
+            return document.getElementById(elId).value;
+        }
+        function SendData(Method, Data = {},CallBack = null) {
+            let POST_DATA = `ReqMethod=${encodeURIComponent(Method)}`;
+            if (Data !== {} && typeof Data === 'object') {
+                for (const key in Data) {
+                    POST_DATA = `${POST_DATA}&${key}=${encodeURIComponent(Data[key])}`;
+                }
+            }
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", '/admin.html', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(POST_DATA);
+            xhr.onloadend = function() {
+                if (typeof CallBack === 'function') {
+                    CallBack(xhr.responseText);
+                } else {
+                    return xhr.responseText;
+                }
+            }
+        }
+    </script>
+    <script src="/js/MiniLib.js"></script>
+</body>
+</html>
