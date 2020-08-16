@@ -16,7 +16,7 @@ Distemi Control Panel
 
 	To run, download NodeJS (https://nodejs.org/ru/) and write node index.js through the console
 
----
+-----------
 
 ### For Linux
 
@@ -32,7 +32,7 @@ Distemi Control Panel
 
 	Run file Start.sh
 
-
+-----------
 
 ### Thanks to libraries
 
