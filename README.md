@@ -1,3 +1,7 @@
+
+h1 Distemi Control Panel
+=====================
+
 For Windows
 
 	RU:
@@ -11,6 +15,8 @@ For Windows
 	Change the data in the files attached to the config folder.
 
 	To run, download NodeJS (https://nodejs.org/ru/) and write node index.js through the console
+
+---
 
 For Linux
 
