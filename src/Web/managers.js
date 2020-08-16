@@ -4,7 +4,7 @@ const
 
 app.get('/', (req, res) => {
     if (AuthCheck(req)===false) {
-        Sender.Standard(req, res, GetFile(`CPWebSite\\index.html`)
+        Sender.Standard(req, res, GetFile(`CPWebSite/index.html`)
             .split('{lang:auth:Web:Authorisation}').join(config.lang.auth.Web.Authorisation)
             .split('{lang:auth:Web:login}').join(config.lang.auth.Web.login)
             .split('{lang:auth:Web:password}').join(config.lang.auth.Web.password)

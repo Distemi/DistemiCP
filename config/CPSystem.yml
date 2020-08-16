@@ -1,0 +1,4 @@
+Web:
+  port: 80
+  host: 0.0.0.0
+  CookieSecret: '9qc4biHm3+FlN0r3hGIvV5l63wQPGuhH'

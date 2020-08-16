@@ -1,9 +1,9 @@
 module.exports.Standard = function (req, res, content, needAuth = false) {
     if (typeof content === "number") {
         if (content === 404) {
-            res.send(GetFile('CPWebSite\\Errors\\404.html'));
+            res.send(GetFile('CPWebSite/Errors/404.html'));
         } else if (content === 404) {
-            res.send(GetFile('CPWebSite\\Errors\\403.html'));
+            res.send(GetFile('CPWebSite/Errors/403.html'));
         }
         return false;
     } else {
@@ -14,7 +14,7 @@ module.exports.Standard = function (req, res, content, needAuth = false) {
 }
 
 module.exports.Advanced = function (req, res, FileURL, Custom = {}) { //WARNING!! Auth Needed!
-    let Content = GetFile(`CPWebSite\\${FileURL}`).toString();
+    let Content = GetFile(`CPWebSite/${FileURL}`).toString();
 
     let CFGName = '';
     CFGName = 'lang';

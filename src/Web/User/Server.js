@@ -2,8 +2,8 @@ const
     app = WebServer.app;
 app.get('/User/Server.html', (req, res) => {
     if (managers.AuthCheck(req) === true) {
-        Sender.Advanced(req,res,'User\\Server.html', {
-            'console': ServersManager.GetFileFromServer("logs\\latest.log", req.session.user).split('\r\n').join('<br>'),
+        Sender.Advanced(req,res,'User/Server.html', {
+            'console': ServersManager.GetFileFromServer("logs/latest.log", req.session.user).split('\r\n').join('<br>'),
             'adminPage': config.UsersData.Users[req.session.user].AccessType === 'admin' ? '<main class="el"><a href="/admin.html">Админ панель</a></main>' : ''
         });
    } else {

@@ -12,7 +12,7 @@ app.use((req, res, next) => {
     if(url.substr(1,3) === "css") {
         res.setHeader("content-type", "text/css");
     }
-    //console.log(CPMainPath  + `\\CPWebSite${url}`);
+    //console.log(CPMainPath  + `/CPWebSite${url}`);
     if (!File) {
         Sender.Standard(req,res,404);
     } else {

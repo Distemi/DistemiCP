@@ -1,28 +1,28 @@
 const fs = require('fs');
 let NotFoundedServers = Object.keys(config.UsersData.Users);
 function reload(){
-    fs.readdir(global.CPMainPath + '\\Servers',(err, files) => {
+    fs.readdir(global.CPMainPath + '/Servers',(err, files) => {
         files.forEach((value, index, array) => {
             if (NotFoundedServers.includes(value)) {
                 if (NotFoundedServers.indexOf(value) >= 0) {
                     NotFoundedServers.splice(NotFoundedServers.indexOf(value), 1);
                 }
             } else {
-                fs.rmdirSync(`${global.CPMainPath}\\Servers\\${value}`);
+                fs.rmdirSync(`${global.CPMainPath}/Servers/${value}`);
             }
         });
         NotFoundedServers.forEach((value, index, array) => {
-            fs.mkdirSync(`${global.CPMainPath}\\Servers\\${value}`);
+            fs.mkdirSync(`${global.CPMainPath}/Servers/${value}`);
         });
     });
 }
 reload();
 global.ServersManager = {};
 global.ServersManager.GetDirURL = function (UserName) {
-    return `${global.CPMainPath}\\Servers\\${UserName}\\`;
+    return `${global.CPMainPath}/Servers/${UserName}/`;
 };
 global.ServersManager.GetFileFromServer = function (FileUrl, UserName) {
-    const ret = GetFile(`Servers\\${UserName}\\${FileUrl}`);
+    const ret = GetFile(`Servers/${UserName}/${FileUrl}`);
     return ret === false ? '' : ret;
 }
 //Server Per User - Manager
@@ -33,7 +33,7 @@ let Servers = {};
 global.ServersManager.StartServer = function (UserName) {
     if (typeof Servers[UserName] === 'undefined') {
         if (fs.existsSync(ServersManager.GetDirURL(UserName) + 'server.jar')===true) {
-            if (fs.existsSync(ServersManager.GetDirURL(UserName) + 'logs\\')) {
+            if (fs.existsSync(ServersManager.GetDirURL(UserName) + 'logs/')) {
                 fs.rmdirSync(ServersManager.GetDirURL(UserName) + 'logs', { recursive: true });
             }
             Servers[UserName] = ServerSpawn('java',['-Xmx1536M','-Dfile.encoding=UTF-8','-jar','server.jar','nogui'],{checkCWD: true, cwd: ServersManager.GetDirURL(UserName)});
@@ -49,8 +49,8 @@ global.ServersManager.StartServer = function (UserName) {
     }
 }
 global.ServersManager.GetConsole = function (UserName) {
-    if (fs.existsSync(ServersManager.GetDirURL(UserName) + 'logs\\latest.log')) {
-        return fs.readFileSync(ServersManager.GetDirURL(UserName) + 'logs\\latest.log');
+    if (fs.existsSync(ServersManager.GetDirURL(UserName) + 'logs/latest.log')) {
+        return fs.readFileSync(ServersManager.GetDirURL(UserName) + 'logs/latest.log');
     } else {
         return config.lang.Web.Loading;
     }

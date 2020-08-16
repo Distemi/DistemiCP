@@ -1,0 +1,7 @@
+Users:
+  admin:
+    Password: '32'
+    AccessType: admin
+    AuthData:
+      key: none
+      ip: none

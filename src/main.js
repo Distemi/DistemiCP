@@ -10,16 +10,16 @@ function GetFile(URL) {
     URL = URL.split('..').join('');
 
     try {
-        fs.statSync(global.CPMainPath + '\\' + URL);
-        if (fs.existsSync(global.CPMainPath + '\\' + URL)===true) {
-            return fs.readFileSync(global.CPMainPath + '\\' + URL, 'utf8');
+        fs.statSync(global.CPMainPath + '/' + URL);
+        if (fs.existsSync(global.CPMainPath + '/' + URL)===true) {
+            return fs.readFileSync(global.CPMainPath + '/' + URL, 'utf8');
         }
     } catch (e) {
         return false;
     }
 }
 function SaveFile(URL, Content) {
-    return fs.writeFileSync(global.CPMainPath + '\\' + URL, Content);
+    return fs.writeFileSync(global.CPMainPath + '/' + URL, Content);
 }
 global.GetFile = GetFile;
 global.SaveFile = SaveFile;
