@@ -31,3 +31,20 @@ Distemi Control Panel
 	apt install -y nodejs npm git
 
 	Run file Start.sh
+
+
+
+**Thanks to libraries**
+
+	1. body-parser     - https://www.npmjs.com/package/body-parser
+
+	2. child_process   - https://www.npmjs.com/package/child-process
+
+	3. express         - https://www.npmjs.com/package/express
+
+	4. express-session - https://www.npmjs.com/package/express-session
+
+	5. js-yaml         - https://www.npmjs.com/package/js-yaml
+
+	6. pidusage        - https://www.npmjs.com/package/pidusage
+	
