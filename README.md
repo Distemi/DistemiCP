@@ -1,14 +1,14 @@
 For Windows
 	RU:
-	€змените данные в файлах вложенных в папку config.
-	„лЯ запуска скачайте NodeJS(https://nodejs.org/ru/) и через консоль пропишите node index.js
+	РР·РјРµРЅРёС‚Рµ РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р»Р°С… РІР»РѕР¶РµРЅРЅС‹С… РІ РїР°РїРєСѓ config.
+	Р”Р»СЏ Р·Р°РїСѓСЃРєР° СЃРєР°С‡Р°Р№С‚Рµ NodeJS(https://nodejs.org/ru/) Рё С‡РµСЂРµР· РєРѕРЅСЃРѕР»СЊ РїСЂРѕРїРёС€РёС‚Рµ node index.js
 	EN:
 	Change the data in the files attached to the config folder.
 	To run, download NodeJS (https://nodejs.org/ru/) and write node index.js through the console
 For Linux
 	RU:
 	apt install -y nodejs npm git
-	‡апустите Start.sh
+	Р—Р°РїСѓСЃС‚РёС‚Рµ Start.sh
 	EN:
 	apt install -y nodejs npm git
 	Run Start.sh
