@@ -1,8 +1,8 @@
 
-h1 Distemi Control Panel
+      Distemi Control Panel
 =====================
 
-For Windows
+**For Windows**
 
 	RU:
 
@@ -18,7 +18,7 @@ For Windows
 
 ---
 
-For Linux
+**For Linux**
 
 	RU:
 
