@@ -35,16 +35,9 @@ Distemi Control Panel
 
 
 **Thanks to libraries**
-
-	1. body-parser     - https://www.npmjs.com/package/body-parser
-
-	2. child_process   - https://www.npmjs.com/package/child-process
-
-	3. express         - https://www.npmjs.com/package/express
-
-	4. express-session - https://www.npmjs.com/package/express-session
-
-	5. js-yaml         - https://www.npmjs.com/package/js-yaml
-
-	6. pidusage        - https://www.npmjs.com/package/pidusage
-	
+	- body-parser     - https://www.npmjs.com/package/body-parser
+	- child_process   - https://www.npmjs.com/package/child-process
+	- express         - https://www.npmjs.com/package/express
+	- express-session - https://www.npmjs.com/package/express-session
+	- js-yaml         - https://www.npmjs.com/package/js-yaml
+	- pidusage        - https://www.npmjs.com/package/pidusage
