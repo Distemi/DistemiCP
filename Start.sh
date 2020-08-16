@@ -1,6 +1,6 @@
 #!/bin/bash
 printf "\033c"
-FILE='config/CPSysytem.yml'
+FILE='src/FirstRun'
 if [ -f $FILE ]; then
     #installed
     echo 'Start...'
@@ -19,6 +19,7 @@ else
     echo ""
     echo "Installing..."
     COUNTER=$(openssl rand -base64 48 | cut -c1-$CookieSecretLenght)
+    touch src/FirstRun
     cat <<EOF > config/CPSystem.yml
 Web:
   port: $WebPort

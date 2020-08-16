@@ -5,6 +5,7 @@ For Windows
 	EN:
 	Change the data in the files attached to the config folder.
 	To run, download NodeJS (https://nodejs.org/ru/) and write node index.js through the console
+	
 For Linux
 	RU:
 	apt install -y nodejs npm git
