@@ -18,10 +18,10 @@ For Linux
 
 	apt install -y nodejs npm git
 
-	Запустите Start.sh
+	Запустите файл Start.sh
 
 	EN:
 
 	apt install -y nodejs npm git
 
-	Run Start.sh
+	Run file Start.sh
