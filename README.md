@@ -2,7 +2,7 @@
 Distemi Control Panel
 =====================
 
-**For Windows**
+### For Windows
 
 	RU:
 
@@ -18,7 +18,7 @@ Distemi Control Panel
 
 ---
 
-**For Linux**
+### For Linux
 
 	RU:
 
