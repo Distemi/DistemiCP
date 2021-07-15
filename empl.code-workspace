@@ -5,9 +5,6 @@
 		},
 		{
 			"path": "empl-backend"
-		},
-		{
-			"path": "empl-additional"
 		}
 	],
 	"settings": {
