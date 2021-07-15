@@ -1,0 +1,23 @@
+version: "3.3"
+
+services: 
+    db: 
+        image: mariadb:latest
+        restart: always
+        networks: 
+            - db_net
+        environment: 
+            - MARIADB_ROOT_PASSWORD=RootSimplePasswordMainWorksEmeraldPanel
+        ports: 
+            - "127.0.0.1:3309:3306"
+        volumes: 
+            - "./mariadb:/var/lib/mysql"
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        networks: 
+            - db_net
+        ports:
+            - "127.0.0.1:8009:80"
+networks: 
+    db_net:
