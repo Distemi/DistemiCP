@@ -1,0 +1,15 @@
+{
+  "name": "empl-backend",
+  "version": "1.0.0",
+  "description": "Emerald Panel - ladding page backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Distemi",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "polka": "^0.5.2"
+  }
+}

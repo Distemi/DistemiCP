@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "empl-frontend"
+		},
+		{
+			"path": "empl-backend"
+		},
+		{
+			"path": "empl-additional"
+		}
+	],
+	"settings": {
+		"i18n-ally.localesPaths": [
+			"src/locales"
+		],
+		"i18n-ally.keystyle": "nested"
+	}
+}
